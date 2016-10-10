@@ -131,9 +131,18 @@ def main():
     print("The exact value is: ", V_exact, delta_exact,gamma_exact,theta_exact)
     end=time.time()
     print("Time for 10000 Average binomail tree method: ",(end-start))
-
+    exact=np.zeros((1,4))
+    exact[0][0]=V_exact
+    exact[0][1]=delta_exact
+    exact[0][2]=gamma_exact
+    exact[0][3]=theta_exact
     # Write exact value
     # Write the results to csv files
+    with open("exact.csv","w",newline='')as csvfile2:
+        writer=csv.writer(csvfile2)
+        writer.writerows(exact)
+        csvfile2.close()
+    print("Writing exact value to file.")
     '''
     csvfile2 = file("exact_value.csv", "wb")
     writer = csv.writer(csvfile2)
